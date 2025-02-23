@@ -13,6 +13,8 @@ const client = createClient({
 // Custom hook for fetching projects
 export const useFetchProjects = () => {
 
+    let result;
+
     const { isError, isLoading, data } = useQuery({
         queryKey: ['tasks'], // This is the unique identifier for caching
         queryFn: () =>
@@ -23,18 +25,18 @@ export const useFetchProjects = () => {
 
     // If data is being loaded, return the loading state
     if (isLoading) {
-        return { isError, isLoading};
+        return { isError, isLoading, result:[]};
     }
 
     // If there's an error, return the error state
     if (isError) {
-        return { isError, isLoading};
+        return { isError, isLoading,result: []};
     }
 
     // Map the data into the desired format
     const { items } = data;
 
-    const result = items.map((item) => {
+    result = items.map((item) => {
         // console.log(item)
 
         const { title, url, image } = item.fields;
