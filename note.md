@@ -101,3 +101,6 @@ client
 now, each time the data are modified in contentful, the webhook is triggered and the application will sync automatically
 
 4. save
+
+
+how to add webhooks in vercel. go to your project -> settings -> git -> deploy hooks
